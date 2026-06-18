@@ -1,42 +1,32 @@
 pipeline{
-agent any
+  agent any
 
- stages {
+        stages {
 
-   stage('Checkout') {
-     
-	steps {
-	    
-	    git branch: 'main'
-	    
- 	    url: 'git@github.com:Ribe1/jenkins-pipeline.git'	        
-         }
-    }
+              stage('Build') {
 
-    stage('Build') {
+	              steps {
 
-	steps {
-
-	      sh 'mvn clean package'
-	}
-    }
+	              sh 'mvn clean package'
+	              }
+              }
 
 
-     stage('Deploy') {
+              stage('Deploy') {
 	
-	steps {
+	               steps {
          
-            sh ''' 
+                   sh ''' 
 	    
-            cp target/*.war /opt/tomcat/webapps/
+                   cp target/*.war /opt/tomcat/webapps/
   
-            sudo systemctl restart tomcat
+                   sudo systemctl restart tomcat
 
-            '''
-	}     
-     }	
+                   '''
+	              }     
+              }	
 
 
- }
+  }
 
 }
