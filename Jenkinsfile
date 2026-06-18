@@ -17,9 +17,11 @@ pipeline{
               stage('Deploy') {
 	
 	               steps {
-         
+                     
+                       echo 'Starting Deployment...'
+
                        sh ''' 
-	    
+	          
                        cp target/*.war /opt/tomcat/webapps/
   
                        sudo systemctl restart tomcat
