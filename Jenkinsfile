@@ -1,3 +1,4 @@
+
 pipeline{
   agent any
 
@@ -8,7 +9,8 @@ pipeline{
 	              steps {
 
 	              sh 'mvn clean package'
-	              }
+	     
+                      }
               }
 
 
@@ -16,15 +18,19 @@ pipeline{
 	
 	               steps {
          
-                   sh ''' 
+                       sh ''' 
 	    
-                   cp target/*.war /opt/tomcat/webapps/
+                       cp target/*.war /opt/tomcat/webapps/
   
-                   sudo systemctl restart tomcat
-
-                   '''
-	              }     
+                       sudo systemctl restart tomcat
+ 
+                       '''
+	               
+                       }     
+              
               }	
+
+             
 
 
   }
