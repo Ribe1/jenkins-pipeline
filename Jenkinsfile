@@ -21,7 +21,7 @@ stages {
             whoami
             pwd
             ls -l target/
-            cp target/*.war /opt/tomcat/webapps/
+            sudo cp target/*.war /opt/tomcat/webapps/
             sudo systemctl restart tomcat
             '''
 
