@@ -14,16 +14,23 @@ stages {
 
     stage('Deploy') {
         steps {
-            echo 'Starting Deployment...'
+            echo 'Deploy stage started'
+
 
             sh '''
+            whoami
+            pwd
+            ls -l target/
             cp target/*.war /opt/tomcat/webapps/
             sudo systemctl restart tomcat
             '''
 
-            echo 'Deployment Completed'
-        }
-    }
+            echo 'Deploy stage completed'
+            }
+
+      }
+
+
 }
 
 
