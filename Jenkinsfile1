@@ -1,0 +1,45 @@
+pipeline {
+  agent any 
+   
+  stages {
+  
+       stage('Build') {
+
+            steps {
+
+                sh 'mvn clean package'
+
+             }
+
+        }
+
+        stage('Deploy to server2') {
+
+            steps {
+      
+                sh '''
+ 
+                scp target/*.war ubuntu@172.31.24.227:/tmp/
+
+                ssh ubuntu@172.31.24.227 "
+      
+                sudo cp /tmp/tomcat-demo.war /opt/tomcat/webapps/
+ 
+                sudo systemctl restart tomcat
+
+                "
+
+                '''
+
+           }
+  
+       }
+
+
+  }
+
+
+
+
+
+}
