@@ -25,7 +25,7 @@ stages {
             sudo systemctl restart tomcat
             '''
 
-            echo 'Deploy stage completed...'
+            echo 'Deployment stage completed...'
             }
 
       }
